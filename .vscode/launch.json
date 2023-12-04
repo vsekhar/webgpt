@@ -10,8 +10,7 @@
             "name": "Launch Chrome with extension",
             "url": "https://thebrowser.company/",
             "runtimeArgs": [
-                "--load-extension=${workspaceFolder}",
-                "--profile-directory=Debug"
+                "--load-extension=${workspaceFolder}"
             ]
         }
     ]
