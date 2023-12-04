@@ -1,0 +1,17 @@
+body {
+    width: 300px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.popup-container {
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+}
+
+#summary-text {
+    color: #666;
+}

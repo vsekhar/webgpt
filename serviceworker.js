@@ -2,9 +2,22 @@ chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.action === "callOpenAPI") {
             // TODO fetch api key from storage or suspend until one is entered
-            const apiKey = "YOUR_OPENAI_API_KEY"; // Replace with your OpenAI API key
+            var apiKey = "";
+            chrome.storage.sync.get("apikey", function (result) {
+                if (result === undefined) {
+                    console.log("callOpenAPI: no API key specified");
+                }
+                else if (result.apikey) {
+                    apiKey = result.apikey;
+                }
+            })
+
+            if (!apiKey) {
+                return false;
+            }
         
-            const apiUrl = "https://api.openai.com/v1/chat/completions"; // Adjust the API endpoint
+            // source: https://platform.openai.com/docs/guides/text-generation
+            const apiUrl = "https://api.openai.com/v1/chat/completions";
 
             fetch(apiUrl, {
                 method: "POST",

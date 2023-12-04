@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>WebGPT Control Panel</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <h1>Settings</h1>
@@ -9,14 +10,14 @@
         <a href="popup.html">Home</a>
 
         <form id="settings">
-            <label for="apikey">ChatGPT API key:</label>
-            <input type="text" id="apikey" name="apikey" required>
+            <label for="apiKey">ChatGPT API key:</label>
+            <input type="text" id="apiKey" name="apiKey" required>
             <br>
             <button type="submit">Submit</button>
         </form>
 
         <div id="response"></div>
 
-        <script src="settings.js"></script>
+        <script defer src="settings.js" type="module"></script>
     </body>
 </html>
