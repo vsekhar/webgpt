@@ -1,3 +1,7 @@
+chrome.sidePanel
+    .setPanelBehavior({ openPanelOnActionClick: true })
+    .catch((error) => console.error(error));
+
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.action === "callOpenAPI") {
@@ -15,7 +19,7 @@ chrome.runtime.onMessage.addListener(
             if (!apiKey) {
                 return false;
             }
-        
+
             // source: https://platform.openai.com/docs/guides/text-generation
             const apiUrl = "https://api.openai.com/v1/chat/completions";
 

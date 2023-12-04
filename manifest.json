@@ -5,6 +5,7 @@
   "description": "WebGPT uses AI to make you more productive",
   "permissions": [
     "activeTab",
+    "sidePanel",
     "storage"
   ],
   "host_permissions": [
@@ -12,11 +13,14 @@
     "https://*/*"
   ],
   "background": {
-    "service_worker": "serviceworker.js",
+    "service_worker": "service-worker.js",
     "type": "module"
   },
   "action": {
-    "default_popup": "popup.html"
+    "default_title": "Open WebGPT"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
   },
   "content_scripts": [
     {
