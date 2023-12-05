@@ -1,6 +1,16 @@
-chrome.sidePanel
-    .setPanelBehavior({ openPanelOnActionClick: true })
-    .catch((error) => console.error(error));
+chrome.runtime.onMessage.addListener(
+    function (request, sender, sendResponse) {
+        if (request.action === "pageContent") {
+            console.log("content: URL=" + String(request.url));
+            console.log("innerText: " + String(request.innerText));
+            
+            // TODO: save into IndexedDB
+            // TODO: submit for summarization
+
+            sendResponse(); // prevent other listeners from being invoked
+        }
+    }
+);
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
@@ -34,8 +44,7 @@ chrome.runtime.onMessage.addListener(
                 .then(response => response.json())
                 .then(data => sendResponse({ success: true, data }))
                 .catch(error => sendResponse({ success: false, error }));
+            return true; // Indicates that the response will be sent asynchronously
         }
-
-        return true; // Indicates that the response will be sent asynchronously
     }
 );

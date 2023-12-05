@@ -1,2 +1,5 @@
-// content.js
-console.log("WebGPT loaded in this tab.");
+chrome.runtime.sendMessage({
+    action: "pageContent",
+    url: document.URL,
+    innerText: document.body.innerText
+});
