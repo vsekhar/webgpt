@@ -1,23 +1,35 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" >
-        <title>WebGPT Control Panel</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <h1>WebGPT</h1>
+<html lang="en">
 
-        <a href="settingsform.html">Settings</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>WebGPT Control Panel</title>
+</head>
 
-        <h2>Page summary</h2>
-        <div id="summary">TBD</div>
-
-        <div id="raw">
-            <h2>Raw page data</h2>
-            <div id="rawData"></div>
+<body>
+    <div id="webgpt-container">
+        <div id="webgpt-header">
+            <h2>WebGPT: your AI browser</h1>
+                <a href="settingsform.html">Settings</a>
         </div>
 
-        <script defer src="sidepanel.js" type="module"></script>
-    </body>
+        <div id="webgpt-summary">
+            <h2>Page summary</h2>
+            <div id="webgpt-summary-data">TBD</div>
+        </div>
+
+        <div id="webgpt-debug">
+            <h2>Debug</h2>
+
+            <div id="raw">
+                <h3>innerText</h3>
+                <div id="rawData"></div>
+            </div>
+        </div>
+    </div>
+    <script defer src="sidepanel.js" type="module"></script>
+</body>
+
 </html>
