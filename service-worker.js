@@ -1,3 +1,11 @@
+// "use strict";
+
+chrome.offscreen.createDocument({
+    url: 'offscreen.html',
+    reasons: ['WORKERS'],
+    justification: 'worker',  
+});
+
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.action === "pageContent") {
@@ -7,7 +15,9 @@ chrome.runtime.onMessage.addListener(
             // TODO: save into IndexedDB
             // TODO: submit for summarization
 
-            sendResponse(); // prevent other listeners from being invoked
+            // Forward to side panel for display
+            request.action = "updateSidePanelRaw";
+            return chrome.runtime.sendMessage(request);
         }
     }
 );
@@ -27,7 +37,7 @@ chrome.runtime.onMessage.addListener(
             })
 
             if (!apiKey) {
-                return false;
+                return;
             }
 
             // source: https://platform.openai.com/docs/guides/text-generation
